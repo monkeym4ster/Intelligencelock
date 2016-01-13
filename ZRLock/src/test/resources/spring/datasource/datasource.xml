@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx  
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+">
+
+	<!-- 采用JNDI方式配置数据源 -->
+	<!-- 北京资产数据源 -->
+	<bean id="zcDataSource" name="zcDataSource" class="org.springframework.jndi.JndiObjectFactoryBean" >
+		<property name="jndiName">
+			<value>jdbc/ZRBJZCDATASOURCE</value>
+		</property>
+		<property name="resourceRef" value="true"></property>
+	</bean>
+	
+	<!-- 智能锁系统数据源 -->
+	<bean id="fcDataSource" name="fcDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>jdbc/FINANCE</value>
+		</property>
+		<property name="resourceRef" value="true"></property>
+	</bean>
+	
+	<!-- 银企直联数据源 -->
+	<bean id="badDataSource" name="badDataSource" class="org.springframework.jndi.JndiObjectFactoryBean" >
+		<property name="jndiName">
+			<value>jdbc/BADDATASOURCE</value>
+		</property>
+		<property name="resourceRef" value="true"></property>
+	</bean>
+
+</beans>
